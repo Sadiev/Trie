@@ -47,5 +47,24 @@ namespace Trie
             }
             return current.isEndOfWord;
         }
+
+        public void traverse() {
+            traverse(Root);
+        }
+
+        private void traverse(Node root) {
+            //Post-order leafs first
+            //foreach (var child in root.children.Values)
+            //{
+            //    traverse(child);
+            //}
+
+            //Pre-order visit the root first
+            Console.WriteLine(root.Value);
+            foreach (var child in root.children.Values)
+            {
+                traverse(child);
+            }
+        }
     }
 }

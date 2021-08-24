@@ -9,7 +9,7 @@ namespace Trie
             var trie = new Trie();
             trie.insert("cat");
             trie.insert("can");
-
+            trie.traverse();
             Console.WriteLine(trie.contains("ca"));
         }
     }
