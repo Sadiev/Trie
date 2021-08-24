@@ -8,9 +8,17 @@ namespace Trie
         {
             var trie = new Trie();
             trie.insert("cat");
+            trie.insert("car");
+            trie.insert("card");
+            trie.insert("care");
+            trie.insert("careful");
+            trie.insert("egg");
             trie.insert("can");
-            trie.traverse();
-            Console.WriteLine(trie.contains("ca"));
+
+            var words = trie.findWords("car");
+            Console.WriteLine(String.Join(", ", words));
+            //trie.traverse();
+            //Console.WriteLine(trie.contains("ca"));
         }
     }
 }

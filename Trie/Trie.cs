@@ -66,5 +66,50 @@ namespace Trie
                 traverse(child);
             }
         }
+
+        public void remove(string word) {
+            remove(Root, word);
+        }
+
+        private void remove(Node root, string word)
+        {
+
+        }
+
+        public List<string> findWords(string prefix) {
+            var words = new List<string>();
+            var lastNode = findLastNodeOf(prefix);
+            findWords(lastNode, prefix, words);
+            return words;
+        }
+
+        private void findWords(Node root, string prefix, List<string> words)
+        {
+            if (root == null)
+                return;
+            if (root.isEndOfWord)
+            {
+                words.Add(prefix);
+            }
+            foreach (var child in root.children.Values)
+            {
+                findWords(child, prefix+child.Value, words);
+            }
+        }
+
+        private Node findLastNodeOf(string prefix) {
+            if (prefix == null)
+                return null;
+            var current = Root;
+            foreach (char ch in prefix)
+            {
+                if (!current.children.ContainsKey(ch))
+                {
+                    return null;
+                }
+                current = current.children[ch];
+            }
+            return current;
+        }
     }
 }
